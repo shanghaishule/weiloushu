@@ -1,0 +1,114 @@
+<include file="Public:head"/>
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+	<div class="cLineB">
+		<h4 class="left">骞歌繍澶ц浆鐩楽N鐮佸彂鏀剧鐞�/h4>
+		<a href="javascript:history.go(-1);"  class="right btnGrayS vm"  >杩斿洖</a>
+		<div class="clr"></div> 
+	</div>
+        
+  <div class="cLineB">
+            鏈娲诲姩濂栧搧鎬绘暟锛�span class="redamount">{lanrain:$datacount}</span>涓�銆��涓浜烘暟锛�span class="redamount">{lanrain:$recordcount} </span>涓�銆�凡棰嗗彇濂栧搧锛�span class="redamount">0</span>涓�         </div>
+  <div class="cLine" style=" padding: 8px 0">
+          </div>
+          <div class="msgWrap">
+          <form method="post"  action="" id="info" >
+          <input name="delall"  type="hidden" value="" />
+           <input name="wxid"  type="hidden" value="" />
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR style="text-align: center;">
+					<TH class="select">搴忓彿</TH>
+					<TH>SN鐮�涓鍙�</TH>
+					<TH>濂栭」</TH>
+					<TH>鏄惁宸插彂濂栧搧</TH>
+					<TH>濂栧搧鍙戦�鏃堕棿</TH>
+					 
+					<TH>涓鑰呮墜鏈哄彿</TH>
+					<TH>涓鑰呭井淇＄爜</TH>
+					<TH  >涓鏃堕棿</TH>
+					<TH  >鎿嶄綔</TH>
+                </TR>
+		<div></div>
+              </THEAD>
+              <TBODY>
+				<volist name="record" id="record">
+					 <TR style="line-height:30px;height: 43px;line-height: 59px;">
+						<td class="select">{lanrain:$i}</td>
+						<td>{lanrain:$record.sn}</td>
+						<td>{lanrain:$record.prize}</td>
+						 <td>
+              <if condition="$record['sendstutas'] eq 0">鍚�else/>鏄�/if>
+            </td>
+            <td><if condition="$record['sendtime'] eq 0"> <else/>{lanrain:$record.sendtime|date='Y-m-d H:i:s',###}</if>
+            </td>
+						<td>{lanrain:$record.phone}</td>
+						<td>{lanrain:$record.wecha_name}</td>
+						<td>{lanrain:$record.time|date='Y-m-d H:i:s',###}</td>
+						<td>
+               <if condition="$record['sendstutas'] eq 0"> 
+                 <a href="index.php?g=User&m=Lottery&a=sendprize&id={lanrain:$record.id}">鍙戝</a>
+              <else/>
+               <a href="index.php?g=User&m=Lottery&a=sendnull&id={lanrain:$record.id}">鍙栨秷鍙戝</a>
+              </if>
+             
+            </td>
+					</TR>
+				</volist>
+			  </TBODY>
+            </TABLE>
+           </form> 
+           <script>
+   function checkvotethis() {
+var aa=document.getElementsByName('del_id[]');
+var mnum = aa.length;
+j=0;
+for(i=0;i<mnum;i++){
+if(aa[i].checked){
+j++;
+}
+}
+if(j>0) {
+document.getElementById('info').submit();
+} else {
+alert('鏈�涓换浣曟枃绔犳垨鍥炲锛�)
+}
+}
+
+   </script>
+          </div>
+            
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+
+function changesort(tid,sortval){
+
+var image=new Image();   
+image.src='index.php?ac=app&op=sort&wxid=gh_423dwjkewad&tid='+tid+'&sort='+sortval+'&r='+Math.random(); 
+
+}
+  </script>
+  <!--搴曢儴-->
+  	</div>
+<include file="Public:footer"/>
+        

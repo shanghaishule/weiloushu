@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>var SITEURL='';</script>
+<title> {lanrain::C('site_title')} {lanrain::C('site_name')}</title>
+<link href="{lanrain::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<link href="{lanrain::RES}/css/stylet.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/demo.css" />
+
+<script type="text/javascript" src="{lanrain::RES}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{lanrain::RES}/js/common.js"></script>
+<script type="text/javascript" src="{lanrain::RES}/js/plugins/formvalidator.js"></script>
+
+<script type="text/javascript">
+function ying(){
+	 document.getElementById('tiduser').style.display="none";
+	 document.getElementById('quit').style.display="block";
+}
+function xian(){
+	 document.getElementById('tiduser').style.display="block";
+	 document.getElementById('quit').style.display="none";
+}
+//setTimeout(xian,5000);
+
+
+$(document).ready(function(){
+	/* This code is executed after the DOM has been completely loaded */
+
+	/* Changing thedefault easing effect - will affect the slideUp/slideDown methods: */
+	$.easing.def = "easeOutBounce";
+
+	/* Binding a click event handler to the links: */
+	$('li.button a').click(function(e){
+	
+		/* Finding the drop down list that corresponds to the current section: */
+		var dropDown = $(this).parent().next();
+		
+		/* Closing all other drop down sections, except the current one */
+		$('.dropdown').not(dropDown).slideUp('slow');
+		dropDown.slideToggle('slow');
+		
+		/* Preventing the default event (which would be to navigate the browser to the link's address) */
+		e.preventDefault();
+	})
+	
+	//$('li .dropdown:first').slideDown('slow');
+	
+	<?php $result=''; 
+		foreach($allfunction as $allval){ 
+			if(MODULE_NAME == $allval['funname']){ 
+				$result = "$('#".$allval['funtype']."').slideDown('fast');";
+			}
+		}
+		echo $result;
+	?>
+	
+});
+</script>
+
+</head>
+
+<body>
+<div id="herder" >
+	<div id="top" class="shadow">
+		<img src="__ROOT__/images/logo.png" />
+		<a href="{lanrain::U('Home/Index/index')}" >首页</a>
+		<!-- <a href="{lanrain::U('Home/Index/about')}" >走进微商城</a>
+		<a href="{lanrain::U('Home/Index/product')}" >产品与服务</a>
+		<a href="{lanrain::U('Home/Index/canvass')}" >渠道代理</a>
+        <a href="{lanrain::U('Home/Index/contact')}" >联系我们</a> -->
+        <a href="{lanrain::U('User/Index/index')}" >管理中心</a>
+		<a class="line" ></a>
+        <a href="#" class="a" id="tiduser" onmouseover="ying();" >您好：<span>{lanrain:$Think.session.uname}</span><!-- |substr=0,3} --></a>
+		<a href="{lanrain::U('Home/Users/logout')}" onmouseout="xian()" class="a1" id="quit" onLoad=setTimeout("abc.style.display='none'",5000) >安全退出</a>
+	</div>
+</div>
+<div id="Frame" class="shadow">
+    <div id="floatline"></div>
+	<div id="Menu">
+		<ul class="container">
+		<?php foreach($allfunctiontype as $typekey => $typevalue){ ?>
+		<li class="menu">
+			<ul>
+				<li class="button"><a href="#" class="green"><?php echo $typevalue['funtype']; ?><span></span></a></li>
+				<li class="dropdown" id="<?php echo $typevalue['funtype']; ?>">
+				<?php foreach($allfunction as $allfunvalue2){ if($allfunvalue2['funtype'] == $typevalue['funtype']){ ?>
+                <ul>
+					<li><a href="<?php 
+			                	$para=''; 
+			                	switch($allfunvalue2['funname']){case 'Function': $para='&id='.session('wxid'); break; case 'Product': $para='&dining=1'; break;}  
+			                	echo 'index.php?g=User&m='.$allfunvalue2['funname'].'&a='.$allfunvalue2['actname'].'&token='.$token.$para; 
+			                ?>" ><?php echo $allfunvalue2['name']; ?></a></li>
+				</ul>
+				<?php }} ?>
+				</li>
+			</ul>
+		</li>
+		<?php } ?>
+		</ul>
+	</div>
+	<div id="Content" ></div>
+	

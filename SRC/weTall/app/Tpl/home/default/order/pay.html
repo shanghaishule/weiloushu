@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>会员中心 - 支付订单</title>
+<link href="__STATIC__/weixin/css/shop.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/weixin/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/weixin/js/touchslider.dev.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+var SITE_URL = "http://store.weiapps.cn";
+var REAL_SITE_URL = "http://store.weiapps.cn";
+var PRICE_FORMAT = '¥%s';
+
+$(function(){
+    var span = $("#child_nav");
+    span.hover(function(){
+        $("#float_layer:not(:animated)").show();
+    }, function(){
+        $("#float_layer").hide();
+    });
+});
+
+function submitaction() {
+	var paytype = $('input[name="payment_id"]:checked').val();
+	if(paytype == "4"){
+		//$('#goto_pay').attr("action", "{:U('order/wxpay',array('tokenTall'=>$tokenTall, 'dingdanhao'=>$dingdanhao, 'ordersumPrice'=>$order_sumPrice, 'showwxpaytitle'=>1))}");
+		callpay();
+	}else{
+		$('#goto_pay').attr("action", "{:U('order/end',array('tokenTall'=>$tokenTall, 'dingdanhao'=>$dingdanhao,'ordersumPrice'=>$order_sumPrice))}");
+		$('#goto_pay').submit();
+	}
+
+}
+
+function callpay()
+{
+	WeixinJSBridge.invoke('getBrandWCPayRequest',{$biz_package},function(res){
+	WeixinJSBridge.log(res.err_msg);
+	//alert(res.err_code+res.err_desc+res.err_msg);
+	
+	if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+		//微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+		//因此微信团队建议，当收到ok返回时，向商户后台询问是否收到交易成功的通知，若收到通知，前端展示交易成功的界面；
+		//若此时未收到通知，商户后台主动调用查询订单接口，查询订单的当前状态，并反馈给前端展示相应的界面。
+		alert('支付成功！');
+		window.location.href="{:U('user/index',array('status'=>2))}";
+	}else if(res.err_msg == "get_brand_wcpay_request:fail" ) {
+		//失败
+		alert('支付失败！');
+		window.location.href="{:U('user/index',array('status'=>1))}";
+	}else if(res.err_msg == "get_brand_wcpay_request:cancel" ) {
+		//用户取消
+		alert('您取消了支付！');
+		window.location.href="{:U('user/index',array('status'=>1))}";
+	}else{
+		//其他
+		window.location.href="{:U('user/index',array('status'=>1))}";
+	}
+	});
+}
+</script>
+</head>
+
+<body>
+<include file="public:head" />
+<div id="content">
+    <form action="" method="POST" id="goto_pay">
+        <input type="hidden" name="orderid" value="{$allorderid[0]}" />
+        <input type="hidden" name="dingdanhao" value="{$dingdanhao}" />
+        <div class="step_main">
+        	<eq name="order_exist" value="1">
+        		<div class="clue_on"><h4>订单信息：</h4></div>
+            <else />
+            	<div class="clue_on"><h4>订单提交成功！</h4><p>您的订单已成功生成，共生成<span style="font-weight:bold; color:red;">{$allorderid|count}</span>单。</p></div>
+            </eq>
+            <div class="order_information">
+            	<volist name="allorderid" id="vo">
+            	<p>订单单号：<span>{$vo}</span></p>
+            	</volist>
+                <p>订单总价：<span>¥{$order_sumPrice}</span></p>
+            </div>
+
+
+            <div class="buy">
+            	<p>支付编号：<span style="color:blue;">{$dingdanhao}</span></p>
+                <h3>选择支付方式并付款</h3>
+                    <dl class="defray">
+                        <dt>在线支付</dt>
+                        <eq name="wxpay" value="ok">
+                        <dd>
+                            <p class="radio"><input checked='checked' id="payment_wxpay" name="payment_id" value="4" type="radio"></p>
+                            <p class="logo"><label for="payment_wxpay"><img src="__STATIC__/weixin/images/wxpay_small.png" ></label></p>
+                            <p class="explain">欢迎使用微信支付</p>
+                        </dd>
+                        </eq>
+                        <eq name="alipay_biz" value="ok">
+                        <dd>
+                            <p class="radio"><input id="payment_alipay_biz" name="payment_id" value="5" type="radio"></p>
+                            <p class="logo"><label for="payment_alipay"><img src="__STATIC__/weixin/images/zhi.png" ></label></p>
+                            <p class="explain">商家即时到帐支付</p>
+                        </dd>
+                        </eq>
+                        <eq name="alipay_person" value="ok">
+                        <dd>
+                            <label for="payment_alipay"><p class="radio"><input id="payment_alipay_person" name="payment_id" checked='checked' value="1" type="radio"></p>
+                            <p class="logo"><img src="__STATIC__/weixin/images/zhi.png" ></p></label>
+                            <p class="explain">个人转账支付</p>
+                        </dd>
+                        </eq>
+                        
+                        
+                        <!-- dd>
+                            <p class="radio"><input id="payment_unionpay" name="payment_id" value="3" type="radio"></p>
+                            <p class="logo"><label for="payment_unionpay"><img src="__STATIC__/weixin/images/unionpay.png" ></label></p>
+                            <p class="explain">欢迎使用银联支付</p>
+                        </dd -->
+                    </dl>
+                    <dl class="defray">
+                        <dt>线下支付</dt>
+                        <dd>
+                            <label for="payment_cod"><p class="radio"><input id="payment_cod" name="payment_id" value="2" type="radio"></p>
+                            <p class="logo"><img  src="__STATIC__/weixin/images/huodao.png"></p></label>
+                            <p class="explain">欢迎使用货到付款</p>
+                        </dd>
+                    </dl>           
+            </div>
+            <div class="make_sure">
+                <p>
+                    <a href="javascript: submitaction();" class="btn enter">确认支付</a>
+                </p>
+            </div>
+            
+            
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+<include file="public:footer" />
+</body>
+</html>
