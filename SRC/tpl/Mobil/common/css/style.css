@@ -8,6 +8,13 @@ color: #AAAAAA;
 line-height:30px;
 letter-spacing:1px;
 }
+#containt h1{
+	font:lighter 15px 楷体 #000000；
+	
+}
+
+
+
 #footer{
 font: 15px 楷体;
 text-align:center;
