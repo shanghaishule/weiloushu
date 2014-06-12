@@ -15,4 +15,8 @@ class BrandAction extends BaseAction{
 		
 		$this->display();
 	}
+	public function Picroll2(){
+		
+		$this->display();
+	}
 }
