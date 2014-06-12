@@ -8,16 +8,13 @@ class BrandAction extends BaseAction{
 	public function project(){
 		$this->display();
 	}
-
 	public function facility(){		
 		$this->display();
 	}
-	public function House(){
-		
+	public function House(){		
 		$this->display();
 	}
-	public function Picroll2(){
-		
+	public function Picroll2(){		
 		$this->display();
 	}
 	public function show(){
