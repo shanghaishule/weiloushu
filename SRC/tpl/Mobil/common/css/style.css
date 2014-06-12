@@ -1,12 +1,31 @@
 @CHARSET "UTF-8";
 body{
-background:rgb(0,76,90)
+background:#FFE4C4;
+line-height:1px;
 }
 #containt{
-font:lighter 15px 楷体;
-color: #FFFFFF;
+font:lighter 13px 楷体;
+color: #AAAAAA;
 line-height:30px;
 letter-spacing:1px;
+}
+#containt h1{
+	font:lighter 20px 楷体；
+
+}
+#ztjs .detaile .con{
+	line-height:20px;
+	float:left;
+	width:50%;
+}
+#ssjs .detaile2 .con{
+	line-height:20px;
+	
+}
+#hxjs .detaile3 .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
 }
 #footer{
 font: 15px 楷体;
