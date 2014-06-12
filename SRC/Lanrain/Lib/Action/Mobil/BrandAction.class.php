@@ -19,4 +19,7 @@ class BrandAction extends BaseAction{
 		
 		$this->display();
 	}
+	public function show(){
+		$this->display();
+	}
 }
