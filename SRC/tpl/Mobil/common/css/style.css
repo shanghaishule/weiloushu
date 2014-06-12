@@ -3,16 +3,23 @@ body{
 background:#FFE4C4;
 }
 #containt{
-font:lighter 15px 楷体;
+font:lighter 13px 楷体;
 color: #AAAAAA;
 line-height:30px;
 letter-spacing:1px;
 }
 #containt h1{
-	font:lighter 15px 楷体 #000000；
+	font:lighter 20px 楷体；
+
+}
+#containt 1 1.1 1.1.1{
+	float:left;
 	
 }
-
+#containt 1 1.1 1.1.2{
+	float:left;
+	
+}
 
 
 #footer{
