@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+body{
+background:rgb(0,76,90)
+}
+#containt{
+font:lighter 15px 楷体;
+color: #FFFFFF;
+line-height:30px;
+letter-spacing:1px;
+}
+#footer{
+font: 15px 楷体;
+text-align:center;
+position: absolute; bottom: 0; 
+}
