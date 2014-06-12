@@ -11,4 +11,8 @@ class BrandAction extends BaseAction{
 	public function facility(){		
 		$this->display();
 	}
+	public function House(){
+		
+		$this->display();
+	}
 }
