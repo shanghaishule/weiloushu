@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 body{
 background:#FFE4C4;
+line-height:1px;
 }
 #containt{
 font:lighter 13px 楷体;
@@ -12,16 +13,20 @@ letter-spacing:1px;
 	font:lighter 20px 楷体；
 
 }
-#containt 1 1.1 1.1.1{
+#ztjs .detaile .con{
+	line-height:20px;
 	float:left;
+	width:50%;
+}
+#ssjs .detaile2 .con{
+	line-height:20px;
 	
 }
-#containt 1 1.1 1.1.2{
+#hxjs .detaile3 .con{
+	line-height:20px;
 	float:left;
-	
+	width:50%;	
 }
-
-
 #footer{
 font: 15px 楷体;
 text-align:center;
