@@ -8,7 +8,5 @@ class BrandAction extends BaseAction{
 	public function project(){
 		$this->display();
 	}
-	public function show(){
-		$this->display();
-	}
+
 }
