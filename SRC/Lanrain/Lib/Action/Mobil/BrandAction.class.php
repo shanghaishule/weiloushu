@@ -8,6 +8,7 @@ class BrandAction extends BaseAction{
 	public function project(){
 		$this->display();
 	}
+
 	public function facility(){		
 		$this->display();
 	}
@@ -22,4 +23,5 @@ class BrandAction extends BaseAction{
 	public function show(){
 		$this->display();
 	}
+
 }
