@@ -27,6 +27,19 @@ letter-spacing:1px;
 	float:left;
 	width:50%;	
 }
+#school .facility .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
+}
+#school .facility2 .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
+}
+#jiaotong .facility2 .con{
+	line-height:20px;
+}
 #footer{
 font: 15px 楷体;
 text-align:center;
