@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+body{
+background:#FFE4C4;
+line-height:1px;
+width:100%;
+}
+#containt{
+font:lighter 13px 楷体;
+color: #AAAAAA;
+line-height:30px;
+letter-spacing:1px;
+}
+#containt h1{
+	font:lighter 20px 楷体；
+
+}
+#ztjs .detaile .con{
+	line-height:20px;
+	float:left;
+	width:50%;
+}
+#ssjs .detaile2 .con{
+	line-height:20px;
+	
+}
+#hxjs .detaile3 .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
+}
+#school .facility .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
+}
+#school .facility2 .con{
+	line-height:20px;
+	float:left;
+	width:50%;	
+}
+#jiaotong .facility2 .con{
+	line-height:20px;
+}
+#footer{
+font: 15px 楷体;
+text-align:center;
+position: absolute; bottom: 0; 
+}
