@@ -1,19 +1,22 @@
 @CHARSET "UTF-8";
 body{
-background:#FFE4C4;
-line-height:1px;
-width:100%;
+margin:0;
+padding:0;
 }
 #containt{
-font:lighter 13px 楷体;
-color: #AAAAAA;
-line-height:30px;
+/*font:lighter 13px 楷体;*/
+font-size:20px;
 letter-spacing:1px;
+width:100%;
+margin:0;
+padding:0;
 }
+.details{width:100%;}
 #containt h1{
 	font:lighter 20px 楷体；
 
 }
+.text{padding:20px 5px;width:100%;font-size:50px;}
 #ztjs .detaile .con{
 	line-height:20px;
 	float:left;
@@ -29,17 +32,16 @@ letter-spacing:1px;
 	width:50%;	
 }
 #school .facility .con{
-	line-height:20px;
 	float:left;
 	width:50%;	
 }
 #school .facility2 .con{
-	line-height:20px;
+
 	float:left;
 	width:50%;	
 }
 #jiaotong .facility2 .con{
-	line-height:20px;
+
 }
 #footer{
 font: 15px 楷体;

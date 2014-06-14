@@ -20,5 +20,12 @@ class BrandAction extends BaseAction{
 	public function show(){
 		$this->display();
 	}
+	
+	public function Fudihui(){
+		$this->display();
+	}
+	public function active(){
+		$this->display();
+	}
 
 }
