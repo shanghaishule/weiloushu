@@ -27,5 +27,8 @@ class BrandAction extends BaseAction{
 	public function active(){
 		$this->display();
 	}
+	public function contact(){
+		$this->display();
+	}
 
 }
