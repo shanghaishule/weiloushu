@@ -20,7 +20,6 @@ class BrandAction extends BaseAction{
 	public function show(){
 		$this->display();
 	}
-	
 	public function Fudihui(){
 		$this->display();
 	}
@@ -28,6 +27,9 @@ class BrandAction extends BaseAction{
 		$this->display();
 	}
 	public function contact(){
+		$this->display();
+	}
+	public function map(){
 		$this->display();
 	}
 
